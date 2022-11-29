@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--  React.js and Babel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css"></link>
+    <title>Choose Your Own Adventure! featuring React.js</title>
+  </head>
+  <body>
+    <div class="container-fluid" id="container">If you can read this, it means React is failing.</div>    
+    <footer class="text-center bg-warning">
+      Hamza Ali
+    </footer>
+	  
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	  
+	  
+	  <script type="text/babel">
+//Displays status, inventory and Save/Load. Renders in Story.
+class HUD extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      inventory: props.inventory.map(function(item){
+        return <div><center><button className="inventory-btn" data-toggle="modal" data-target="#Modal">{item[0]}</button><br/><br/></center>
+          <div className="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div className="modal-dialog" role="document">
+              <div className="modal-content">
+                <div className="modal-header">
+                  <h5 className="modal-title" id="ModalLabel">{item[0]}</h5>
+                </div>
+                <div className="modal-body">
+                  {item[1]}
+                </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>;
+      })
+    }
+  }
+  
+  render() {
+    const inv = <center><ul id="inventory" className="pb-1">{this.state.inventory}</ul></center>;
+    const invEmpty = <center><p>You have no items</p></center>;
+    return(
+      <div className="py-2 sticky-top">
+        <div class="nav flex-column">
+        </div>
+      </div>
+    )
+  }
+}
+
+//Chapters: render in Story
+class ChapterOne extends React.Component{
+  constructor(props){
+    super(props);
+  }
+  
+  render(){
+    const part0 = <p><b>Let's begin! Imagine you are Ash Ketchum and you are on the hunt for Pokemon. After running through brush all day you finally spot a yellow rodent-like figure in the tree, Pikachu!!! The process of feeling sensation to perception has begun. Which sensory pathway will Ash subconciously use to catch Pikachu?</b></p>;
+    
+    const question0 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Auditory pathway</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Visual pathway</button></p>;
+    const part0Bad = <p>Yikes, refresh the page and try again.</p>;
+    const part0Good = <p>Correct. Ash's ability to interpret the world and search for Pokemon is made possible by the visual pathway. Ash is one step closer to becoming a Pokemon master!</p>;
+    
+    const part1 = <p><b>The visual pathway begun as light entered Ash's eye. But more specifically which part of the eye did it enter through?</b></p>;
+    const question1 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Pupil</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Iris</button></p>;
+    const part1Bad = <p>So close. The iris is actually responsible for regulating the light that enters the eye through contraction and expansion.</p>;
+    const part1Good = <p>Correct, the light enters the eye through the pupil and Ash definitely has functioning pupils! Let's keep moving.</p>;
+
+    const part2 = <p><b>Okay, now that light enters the eye. How does Ash know that it is a Pikachu and not an Abrakadabra? Which part of Ash's eye contains photoreceptors where transduction takes place?</b></p>;
+    const question2 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Retina</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Vitreous humor</button></p>;
+    const part2Bad = <p>The vitreous humor is fluid that simply fills the chamber in the posterior part of the eye. It helps with support of the retina and eye growth, but not transduction.</p>;
+    const part2Good = <p>Correct! The retina is where light is transformed into electrical signals. However the retina also has other important functions.</p>;
+
+    const part3 = <p><b>The retina contains rods and cones to help the eye perform certain functions. Ash focused directly on Pikachu on a bright sunny day in Pewter City, likely identifying it by it's yellow color. Were rods or cones more helpful in identifying the color of Pikachu for Ash?</b></p>;
+    const question3 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Rods</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Cones</button></p>;
+    const part3Bad = <p>Incorrect. Rods are useful for identifying images in low light and with out color, so maybe if Ash was hunting Pokemon at night, rods would have aided him better.</p>;
+    const part3Good = <p>Correct. Cones help Ash to identify Pikachu because the image is in a photopic setting, and the image has lots of color.</p>;
+
+    const part4 = <p><b>Since Ash uses cones in his fovea to receive the image. Ash has two types of bipolar cells. Which type of bipolar cell receives input from central field of vision and is known for its high acuity? </b></p>;
+    const question4 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Midget bipolar cells</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Diffuse bipolar cells</button></p>;
+    const part4Bad = <p>Incorrect. Diffuse bipolar cells get input from many photoreceptors, have low acuity, and they are common in the periphery, but not the fovea.</p>;
+    const part4Good = <p>Correct! Let's go deeper! Maybe we might find new structures or Pokemon or both?</p>;
+
+    const part5 = <p><b>Next in line for Ash's Pikachu image is the transmission to ganglion cells. However before this the amacrine cells play an important role. What role do they serve?</b></p>;
+    const question5 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Lateral inhibition</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Contrast enhancement and temporal sensitivity</button></p>;
+    const part5Bad = <p>Horizontal cells actually play this role, make sure to study up!</p>;
+    const part5Good = <p>Correct. Amacrine cells help detect light patterns that change over time. As Ash tries to catch the Pikachu, these cells will help detect the change in it's image when it uses its thunderbolt!</p>;
+
+    const part6 = <p><b>Now, the message is transmitted to retinal ganglion cells. Which type of retinal ganglion cells receive input from the bipolar cells?</b></p>;
+    const question6 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>P ganglion cells</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>M ganglion cells</button></p>;
+    const part6Bad = <p>Nope - M ganglion cells receive input from diffuse bipolar cells.</p>;
+    const part6Good = <p>Bingo! P ganglion cells receive input from midget bipolar cells, notably transmitting images of fine visual acuity, color, and shapes.</p>;
+
+    const part7 = <p><b>The image of Pikachu will finally move from the retina, but where to next?</b></p>;
+    const question7 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Lateral geniculate nucleus</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Optic nerve</button></p>;
+    const part7Bad = <p>Incorrect. The image of Pikachu is heading towards the Lateral geniculate nucleus, but not directly after the retina.</p>;
+    const part7Good = <p>Correct! The optic nerve is the next stop, but the Lateral geniculate nucleus will not disappear!</p>;
+
+    const part8 = <p><b>After the image of Pikachu has moved through the optic nerve, optic chiasm, and optic tract, it has reached the lateral geniculate nucleus. Which portion of the brain is the Lateral geniculate nucleus located in?</b></p>;
+    const question8 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Thalamus</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Hippocampus</button></p>;
+    const part8Bad = <p>Incorrect, please look at the structure of the brain again. Should be easy since you are using it right now.</p>;
+    const part8Good = <p>Correct! We're in the brain now!</p>;
+
+    const part9 = <p><b>After the image is processed in the six different layers of the LGN, where is info passed to process visual information?</b></p>;
+    const question9 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Middle temporal area</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Striate cortex</button></p>;
+    const part9Bad = <p>Incorrect, the middle temporal area is one of the four brain areas involved in object detection</p>;
+    const part9Good = <p>Correct, processing continues in the striate cortex(V1).</p>;
+
+    const part10 = <p><b>The processing of the Pikachu image is split between two higher-order pathways. Ash is focused upon Pikachu, which is a Pokemon. Which pathway will help Ash identify Pikachu as a Pokemon (a mythical object/creature)?</b></p>;
+    const question10 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Ventral pathway</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Dorsal pathway</button></p>;
+    const part10Bad = <p>Incorrect. The dorsal pathway is focused on spatial location.</p>;
+    const part10Good = <p>Correct! Here, Pikachu is identified, using principles such as mid-level vision.</p>;
+
+    const part11 = <p><b>After Ash identifies Pikachu, he takes a wider look at the tree to see if there are any berries that he can feed to his other Pokemon. Which grouping principle helps Ash to identify the other berries in the tree as being different from the leaves?</b></p>;
+    const question11 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Similarity</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Good continuation</button></p>;
+    const part11Bad = <p>Incorrect. Good continuation relates to the contour of an image.</p>;
+    const part11Good = <p>Correct, Ash groups all the similarly-looking berries as being part of one group, separate from the leaves of the tree.</p>;
+
+    const part12 = <p><b>Finally, after picking up his Pokeball, Ash takes a step back to look at the entire forest. Which brain area is more likely to respond to this large image?</b></p>;
+    const question12 = <p className="container"><button className="btn btn-block" onClick={() => this.props.addChoice('0')}>Extrastriate Body Area (EBA)</button><button className="btn btn-block" onClick={() => this.props.addChoice('1')}>Parahippocampal Place Area (PPA)</button></p>;
+    const part12Bad = <p>Incorrect. This is not the right specialized brain area. You were this close and you can come back again!</p>;
+    const part12Good = <p>Correct and with that you've completed the visual pathway! You are one step closer to becoming the very best that no one ever was!</p>;
+
+    return(
+      <p>
+        {part0}
+        {this.props.progress==0 && question0}
+        {this.props.progress>=1 && (this.props.choices[0]==0 ? <p><i>Auditory pathway</i></p> : <p><i>Visual pathway</i></p>)}
+        {this.props.progress>=1 && (this.props.choices[0]==1 ? part0Good : part0Bad)}
+
+        {this.props.progress>=1 && (this.props.choices[0]==1 ? part1 : <p></p>)}
+        {this.props.progress==1 && (this.props.choices[0]==1 ? question1 : <p>Game over.</p>)}
+        {this.props.progress>=2 && (this.props.choices[1]==0 ? <p><i>Pupil</i></p> : <p><i>Iris</i></p>)}
+        {this.props.progress>=2 && (this.props.choices[1]==0 ? part1Good : part1Bad)}
+
+        {this.props.progress>=2 && (this.props.choices[1]==0 ? part2 : <p></p>)}
+        {this.props.progress==2 && (this.props.choices[1]==0 ? question2 : <p>Game over.</p>)}
+        {this.props.progress>=3 && (this.props.choices[2]==0 ? <p><i>Retina</i></p> : <p><i>Vitreous humor</i></p>)}
+        {this.props.progress>=3 && (this.props.choices[2]==0 ? part2Good : part2Bad)}
+
+        {this.props.progress>=3 && (this.props.choices[2]==0 ? part3 : <p></p>)}
+        {this.props.progress==3 && (this.props.choices[2]==0 ? question3 : <p>Game over.</p>)}
+        {this.props.progress>=4 && (this.props.choices[3]==1 ? <p><i>Cones</i></p> : <p><i>Rods</i></p>)}
+        {this.props.progress>=4 && (this.props.choices[3]==1 ? part3Good : part3Bad)}
+
+        {this.props.progress>=4 && (this.props.choices[3]==1 ? part4 : <p></p>)}
+        {this.props.progress==4 && (this.props.choices[3]==1 ? question4 : <p>Game over.</p>)}
+        {this.props.progress>=5 && (this.props.choices[4]==0 ? <p><i>Midget bipolar cells</i></p> : <p><i>Diffuse bipolar cells</i></p>)}
+        {this.props.progress>=5 && (this.props.choices[4]==0 ? part4Good : part4Bad)}
+
+        {this.props.progress>=5 && (this.props.choices[4]==0 ? part5 : <p></p>)}
+        {this.props.progress==5 && (this.props.choices[4]==0 ? question5 : <p>Game over.</p>)}
+        {this.props.progress>=6 && (this.props.choices[5]==0 ? <p><i>Lateral inhibition</i></p> : <p><i>Contrast enhancement and temporal sensitivity</i></p>)}
+        {this.props.progress>=6 && (this.props.choices[5]==1 ? part5Good : part5Bad)}
+
+        {this.props.progress>=6 && (this.props.choices[5]==1 ? part6 : <p></p>)}
+        {this.props.progress==6 && (this.props.choices[5]==1 ? question6 : <p>Game over.</p>)}
+        {this.props.progress>=7 && (this.props.choices[6]==0 ? <p><i>P ganglion cells</i></p> : <p><i>M ganglion cells</i></p>)}
+        {this.props.progress>=7 && (this.props.choices[6]==0 ? part6Good : part6Bad)}
+
+        {this.props.progress>=7 && (this.props.choices[6]==0 ? part7 : <p></p>)}
+        {this.props.progress==7 && (this.props.choices[6]==0 ? question7 : <p>Game over.</p>)}
+        {this.props.progress>=8 && (this.props.choices[7]==0 ? <p><i>Lateral geniculate nucleus</i></p> : <p><i>Optic nerve</i></p>)}
+        {this.props.progress>=8 && (this.props.choices[7]==1 ? part7Good : part7Bad)}
+
+        {this.props.progress>=8 && (this.props.choices[7]==1 ? part8 : <p></p>)}
+        {this.props.progress==8 && (this.props.choices[7]==1 ? question8 : <p>Game over.</p>)}
+        {this.props.progress>=9 && (this.props.choices[8]==0 ? <p><i>Thalamus</i></p> : <p><i>Hippocampus</i></p>)}
+        {this.props.progress>=9 && (this.props.choices[8]==0 ? part8Good : part8Bad)}
+
+        {this.props.progress>=9 && (this.props.choices[8]==0 ? part9 : <p></p>)}
+        {this.props.progress==9 && (this.props.choices[8]==0 ? question9 : <p>Game over.</p>)}
+        {this.props.progress>=10 && (this.props.choices[9]==0 ? <p><i>Middle temporal area</i></p> : <p><i>Striate cortex</i></p>)}
+        {this.props.progress>=10 && (this.props.choices[9]==1 ? part9Good : part9Bad)}
+
+        {this.props.progress>=10 && (this.props.choices[9]==1 ? part10 : <p></p>)}
+        {this.props.progress==10 && (this.props.choices[9]==1 ? question10 : <p>Game over.</p>)}
+        {this.props.progress>=11 && (this.props.choices[10]==0 ? <p><i>Ventral pathway</i></p> : <p><i>Dorsal pathway</i></p>)}
+        {this.props.progress>=11 && (this.props.choices[10]==0 ? part10Good : part10Bad)}
+
+        {this.props.progress>=11 && (this.props.choices[10]==0 ? part11 : <p></p>)}
+        {this.props.progress==11 && (this.props.choices[10]==0 ? question11 : <p>Game over.</p>)}
+        {this.props.progress>=12 && (this.props.choices[11]==0 ? <p><i>Similarity</i></p> : <p><i>Good continuation</i></p>)}
+        {this.props.progress>=12 && (this.props.choices[11]==0 ? part11Good : part11Bad)}
+
+        {this.props.progress>=12 && (this.props.choices[11]==0 ? part12 : <p></p>)}
+        {this.props.progress==12 && (this.props.choices[11]==0 ? question12 : <p>Game over.</p>)}
+        {this.props.progress>=13 && (this.props.choices[12]==0 ? <p><i>Extrastriate Body Area (EBA)</i></p> : <p><i>Parahippocampal Place Area (PPA)</i></p>)}
+        {this.props.progress>=13 && (this.props.choices[12]==1 ? part12Good : part12Bad)}
+      </p>
+    )
+  }
+}
+
+
+//Parent: Layout and Inventory Data
+//Contains the story chapters
+class Story extends React.Component{
+  constructor(props){
+    super(props);
+    this.state={
+      /* INDEX OF CHOICES:
+      0: Start
+      */
+      choices: [],
+      //Progress in general history
+      chapter: 0,
+      //To advance to the next paragraph.
+      progress: 0,
+      /*Determines the paragraphs that will appear next depending on your choices
+      0: Start
+      */
+      path: 0,
+      //For more complex branching
+      subpath: 0,
+      inventory: [
+        //Name, Description
+        ["Cones", "Specialized for daylight, respond best in photopic conditions, high visual acuity and color, ~4-5 million in retina"],
+        ["Rods", "Specialized for night vision, respond well in low light (scotopic), do not process color, ~90 mil in retina, higher in periphery, 1 type of pigment"],
+        ["Horizontal cells", "Responsible for lateral inhibition, creates the center-surround receptive field structure of retinal ganglion cells"],
+        ["Fovea", "Has one-to-one mapping of photoreceptors to ganglion cells"],
+        ["Parvocellular layers", "Carry info about fine spatial detail, 4 layers, get input from P ganglion cells"],
+        ["Retinotopic mapping", "The orderly mapping of the world in the LGN and striate cortex"],
+      ],
+      game: false
+    };
+	  this.startGame = this.startGame.bind(this);
+    this.addChoice = this.addChoice.bind(this);
+    this.renderIntro_Header = this.renderIntro_Header.bind(this);
+    this.renderStory = this.renderStory.bind(this);
+  }
+  startGame(){
+    this.setState({
+      game: true
+    })
+  }
+  addChoice(choiceMade){
+    let cho = this.state.choices;
+    cho.push(choiceMade)
+    this.setState({choices: cho, progress: this.state.progress+1});
+  }
+  saveGame(){
+    try{
+      localStorage.chapter = this.state.chapter;
+      localStorage.progress = this.state.progress;
+      localStorage.path = this.state.path;
+      localStorage.setItem('choices', JSON.stringify(this.state.choices));
+      localStorage.setItem('inventory', JSON.stringify(this.state.inventory));
+      alert('Game saved');
+    }catch(e){
+      alert('Something went wrong!' + e.error);
+    }
+  }
+  loadGame(){
+    let cho = JSON.parse(localStorage.getItem('choices'));
+    let inv = JSON.parse(localStorage.getItem('inventory'));
+    this.setState({
+      game: true,
+      chapter: localStorage.chapter,
+      progress: localStorage.progress,
+      path: localStorage.path,
+      choices: cho,
+      inventory: inv
+    })
+  }
+  
+  //Conditionals for rendering
+  renderIntro_Header(){
+    if(this.state.game==false){
+      return(
+            <header className="text-center bg-warning jumbotron">
+              Sensory Pathway Project
+            </header>
+     )
+    }
+  }
+  renderStory(){
+    if(this.state.progress>=0){
+      return(<ChapterOne addChoice={this.addChoice.bind(this)} progress={this.state.progress} choices={this.state.choices} path={this.state.path} subpath={this.state.subpath}/>);
+    }
+  }
+  ///////////////////////////
+  render(){
+    return(
+      <div>
+	    {this.renderIntro_Header()}
+      <div className="container-fluid">
+        <div className="row">
+          {
+            this.state.game==true &&
+            <nav className="col-3 px-1 bg-info rounded-right" id="sticky-sidebar">
+              <HUD inventory={this.state.inventory} saveGame={this.saveGame.bind(this)} loadGame={this.loadGame.bind(this)}/>
+            </nav>
+          }
+          <div className="col-1 col-sm-1 col-md-1 col-xl-1"></div>
+          <main className={this.state.game==true ? "col-7 col-sm-7 col-md-7 col-xl-7 py-5" : "col-12 col-sm-12 col-md-12 col-xl-12"}>
+            {
+              this.state.game==true ?
+                this.renderStory()
+                :
+                <p>Welcome to my Sensory Pathway Project Interactive Game!<br/><br/>
+                  For this interactive game I've coded, you will simulate a visual stimulus and track your progress from initial sensation to the final stages of interpretation! To play, simply answer the questions to try and correctly identify steps along the visual pathway. In this game, if you get a question wrong you have to refresh the page and play the entire game again. Good luck and Have Fun!
+                   <br/><br/>
+                   <center>
+                    <button className="btn" onClick={() => this.startGame()}>Start game</button> 
+                   </center>
+                </p>
+            }
+          </main>
+          <div className="col-1 col-sm-1 col-md-1 col-xl-1"></div>
+        </div>
+      </div>
+	  </div>    
+    )
+  }
+}
+
+
+
+ReactDOM.render(<Story />, document.getElementById('container'));
+	  </script>	
+  </body>
+</html>
