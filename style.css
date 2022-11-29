@@ -9,7 +9,11 @@
 }
 
 .bg-warning {
-  background-color: aqua!important;
+  background-color: white!important;
+}
+
+.bg-info {
+  background-color: white!important;
 }
 
 #inventory{

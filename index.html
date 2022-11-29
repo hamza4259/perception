@@ -14,9 +14,7 @@
   </head>
   <body>
     <div class="container-fluid" id="container">If you can read this, it means React is failing.</div>    
-    <footer class="text-center bg-warning">
-      Hamza Ali
-    </footer>
+    <footer class="text-center bg-warning"> </footer>
 	  
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
@@ -144,62 +142,62 @@ class ChapterOne extends React.Component{
         {this.props.progress>=1 && (this.props.choices[0]==1 ? part0Good : part0Bad)}
 
         {this.props.progress>=1 && (this.props.choices[0]==1 ? part1 : <p></p>)}
-        {this.props.progress==1 && (this.props.choices[0]==1 ? question1 : <p>Game over.</p>)}
+        {this.props.progress==1 && (this.props.choices[0]==1 ? question1 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=2 && (this.props.choices[1]==0 ? <p><i>Pupil</i></p> : <p><i>Iris</i></p>)}
         {this.props.progress>=2 && (this.props.choices[1]==0 ? part1Good : part1Bad)}
 
         {this.props.progress>=2 && (this.props.choices[1]==0 ? part2 : <p></p>)}
-        {this.props.progress==2 && (this.props.choices[1]==0 ? question2 : <p>Game over.</p>)}
+        {this.props.progress==2 && (this.props.choices[1]==0 ? question2 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=3 && (this.props.choices[2]==0 ? <p><i>Retina</i></p> : <p><i>Vitreous humor</i></p>)}
         {this.props.progress>=3 && (this.props.choices[2]==0 ? part2Good : part2Bad)}
 
         {this.props.progress>=3 && (this.props.choices[2]==0 ? part3 : <p></p>)}
-        {this.props.progress==3 && (this.props.choices[2]==0 ? question3 : <p>Game over.</p>)}
+        {this.props.progress==3 && (this.props.choices[2]==0 ? question3 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=4 && (this.props.choices[3]==1 ? <p><i>Cones</i></p> : <p><i>Rods</i></p>)}
         {this.props.progress>=4 && (this.props.choices[3]==1 ? part3Good : part3Bad)}
 
         {this.props.progress>=4 && (this.props.choices[3]==1 ? part4 : <p></p>)}
-        {this.props.progress==4 && (this.props.choices[3]==1 ? question4 : <p>Game over.</p>)}
+        {this.props.progress==4 && (this.props.choices[3]==1 ? question4 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=5 && (this.props.choices[4]==0 ? <p><i>Midget bipolar cells</i></p> : <p><i>Diffuse bipolar cells</i></p>)}
         {this.props.progress>=5 && (this.props.choices[4]==0 ? part4Good : part4Bad)}
 
         {this.props.progress>=5 && (this.props.choices[4]==0 ? part5 : <p></p>)}
-        {this.props.progress==5 && (this.props.choices[4]==0 ? question5 : <p>Game over.</p>)}
+        {this.props.progress==5 && (this.props.choices[4]==0 ? question5 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=6 && (this.props.choices[5]==0 ? <p><i>Lateral inhibition</i></p> : <p><i>Contrast enhancement and temporal sensitivity</i></p>)}
         {this.props.progress>=6 && (this.props.choices[5]==1 ? part5Good : part5Bad)}
 
         {this.props.progress>=6 && (this.props.choices[5]==1 ? part6 : <p></p>)}
-        {this.props.progress==6 && (this.props.choices[5]==1 ? question6 : <p>Game over.</p>)}
+        {this.props.progress==6 && (this.props.choices[5]==1 ? question6 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=7 && (this.props.choices[6]==0 ? <p><i>P ganglion cells</i></p> : <p><i>M ganglion cells</i></p>)}
         {this.props.progress>=7 && (this.props.choices[6]==0 ? part6Good : part6Bad)}
 
         {this.props.progress>=7 && (this.props.choices[6]==0 ? part7 : <p></p>)}
-        {this.props.progress==7 && (this.props.choices[6]==0 ? question7 : <p>Game over.</p>)}
+        {this.props.progress==7 && (this.props.choices[6]==0 ? question7 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=8 && (this.props.choices[7]==0 ? <p><i>Lateral geniculate nucleus</i></p> : <p><i>Optic nerve</i></p>)}
         {this.props.progress>=8 && (this.props.choices[7]==1 ? part7Good : part7Bad)}
 
         {this.props.progress>=8 && (this.props.choices[7]==1 ? part8 : <p></p>)}
-        {this.props.progress==8 && (this.props.choices[7]==1 ? question8 : <p>Game over.</p>)}
+        {this.props.progress==8 && (this.props.choices[7]==1 ? question8 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=9 && (this.props.choices[8]==0 ? <p><i>Thalamus</i></p> : <p><i>Hippocampus</i></p>)}
         {this.props.progress>=9 && (this.props.choices[8]==0 ? part8Good : part8Bad)}
 
         {this.props.progress>=9 && (this.props.choices[8]==0 ? part9 : <p></p>)}
-        {this.props.progress==9 && (this.props.choices[8]==0 ? question9 : <p>Game over.</p>)}
+        {this.props.progress==9 && (this.props.choices[8]==0 ? question9 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=10 && (this.props.choices[9]==0 ? <p><i>Middle temporal area</i></p> : <p><i>Striate cortex</i></p>)}
         {this.props.progress>=10 && (this.props.choices[9]==1 ? part9Good : part9Bad)}
 
         {this.props.progress>=10 && (this.props.choices[9]==1 ? part10 : <p></p>)}
-        {this.props.progress==10 && (this.props.choices[9]==1 ? question10 : <p>Game over.</p>)}
+        {this.props.progress==10 && (this.props.choices[9]==1 ? question10 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=11 && (this.props.choices[10]==0 ? <p><i>Ventral pathway</i></p> : <p><i>Dorsal pathway</i></p>)}
         {this.props.progress>=11 && (this.props.choices[10]==0 ? part10Good : part10Bad)}
 
         {this.props.progress>=11 && (this.props.choices[10]==0 ? part11 : <p></p>)}
-        {this.props.progress==11 && (this.props.choices[10]==0 ? question11 : <p>Game over.</p>)}
+        {this.props.progress==11 && (this.props.choices[10]==0 ? question11 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=12 && (this.props.choices[11]==0 ? <p><i>Similarity</i></p> : <p><i>Good continuation</i></p>)}
         {this.props.progress>=12 && (this.props.choices[11]==0 ? part11Good : part11Bad)}
 
         {this.props.progress>=12 && (this.props.choices[11]==0 ? part12 : <p></p>)}
-        {this.props.progress==12 && (this.props.choices[11]==0 ? question12 : <p>Game over.</p>)}
+        {this.props.progress==12 && (this.props.choices[11]==0 ? question12 : <p>Refresh and Try Again!.</p>)}
         {this.props.progress>=13 && (this.props.choices[12]==0 ? <p><i>Extrastriate Body Area (EBA)</i></p> : <p><i>Parahippocampal Place Area (PPA)</i></p>)}
         {this.props.progress>=13 && (this.props.choices[12]==1 ? part12Good : part12Bad)}
       </p>
@@ -284,7 +282,7 @@ class Story extends React.Component{
     if(this.state.game==false){
       return(
             <header className="text-center bg-warning jumbotron">
-              Sensory Pathway Project
+              Sensory Pathway Project Interactive Game
             </header>
      )
     }
@@ -313,8 +311,8 @@ class Story extends React.Component{
               this.state.game==true ?
                 this.renderStory()
                 :
-                <p>Welcome to my Sensory Pathway Project Interactive Game!<br/><br/>
-                  For this interactive game I've coded, you will simulate a visual stimulus and track your progress from initial sensation to the final stages of interpretation! To play, simply answer the questions to try and correctly identify steps along the visual pathway. In this game, if you get a question wrong you have to refresh the page and play the entire game again. Good luck and Have Fun!
+                <p>Welcome to the Sensory Pathway Project Interactive Game!<br/><br/>
+                  For this interactive game, you will simulate a visual stimulus and track your progress from sensation to the final stages of interpretation! To play, simply click the button below and try to answer the questions correctly. If you get a question wrong you will have to refresh the page and play the entire game again (gotta love javascript). Good luck and Have Fun!
                    <br/><br/>
                    <center>
                     <button className="btn" onClick={() => this.startGame()}>Start game</button> 
